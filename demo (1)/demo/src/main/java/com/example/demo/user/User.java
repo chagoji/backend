@@ -1,5 +1,7 @@
-package com.example.demo;
+package com.example.demo.user;
 
+import com.example.demo.favorite.Favorite;
+import com.example.demo.recommendation.Recommendation;
 import jakarta.persistence.Entity;
 import jakarta.persistence.*;
 import lombok.Getter;

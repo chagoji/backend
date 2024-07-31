@@ -1,5 +1,7 @@
-package com.example.demo;
+package com.example.demo.recommendation;
 
+import com.example.demo.property.Property;
+import com.example.demo.user.User;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
