@@ -1,5 +1,7 @@
 package com.example.demo.user;
 
+import com.example.demo.security.JwtDTO;
+import com.example.demo.security.JwtProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -14,6 +16,9 @@ public class UserService {
 
     @Autowired
     private PasswordEncoder passwordEncoder;
+
+    @Autowired
+    private JwtProvider jwtProvider;
 
     public UserResponseDTO signup(UserRequestDTO userRequestDTO) {
         User user = new User();
@@ -34,4 +39,15 @@ public class UserService {
 
         return userResponseDTO;
     }
+
+    public JwtDTO login(UserRequestDTO userRequestDTO) {
+        User user = userRepository.findByEmail(userRequestDTO.getEmail());
+        if (user == null || !passwordEncoder.matches(userRequestDTO.getPassword(), user.getPassword())) {
+            throw new RuntimeException("Invalid credentials");
+        }
+        String accessToken = jwtProvider.createToken(user.getEmail());
+        String refreshToken = jwtProvider.createRefreshToken(user.getEmail());
+        return new JwtDTO(accessToken,refreshToken);
+    }
+
 }
