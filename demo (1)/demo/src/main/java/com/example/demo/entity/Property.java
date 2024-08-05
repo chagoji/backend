@@ -1,8 +1,5 @@
-package com.example.demo.property;
+package com.example.demo.entity;
 
-import com.example.demo.favorite.Favorite;
-import com.example.demo.pricePrediction.PricePrediction;
-import com.example.demo.recommendation.Recommendation;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
