@@ -1,6 +1,9 @@
-package com.example.demo.user;
+package com.example.demo.controller;
 
-import com.example.demo.security.JwtDTO;
+import com.example.demo.dto.JwtDTO;
+import com.example.demo.dto.UserRequestDTO;
+import com.example.demo.dto.UserResponseDTO;
+import com.example.demo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
